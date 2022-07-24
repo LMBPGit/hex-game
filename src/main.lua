@@ -14,5 +14,5 @@ end
 
 function love.draw()
   ShowFPS()
-  CreateHexGrid(3)
+  CreateHexGrid(MapTable)
 end

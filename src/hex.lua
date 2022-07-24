@@ -31,13 +31,24 @@ function HexToPixel(hex)
   return x, y
 end
 
-function CreateHexGrid(mapRadius)
-  for q = -mapRadius, mapRadius do
-    local r1 = math.max(-mapRadius, -q - mapRadius);
-    local r2 = math.min(mapRadius, -q + mapRadius);
-    for r = r1, r2 do
-      local hex = { q = q, r = r }
-      DrawGridHex(hex)
-    end
+-- Moved to init.lua
+-- function CreateHexMapTable(mapRadius)
+--   local mapTable = {  }
+--   local index = 0
+--   for q = -mapRadius, mapRadius do
+--     local r1 = math.max(-mapRadius, -q - mapRadius);
+--     local r2 = math.min(mapRadius, -q + mapRadius);
+--     for r = r1, r2 do
+--       mapTable[index] = { q = q, r = r }
+--       index = index + 1
+--     end
+--   end
+--   return mapTable
+-- end
+
+function CreateHexGrid(mapTable)
+  for key,value in pairs(mapTable) do
+    local hex = { q = value.q, r = value.r }
+    DrawGridHex(hex)
   end
 end
